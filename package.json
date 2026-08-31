@@ -28,6 +28,14 @@
     "project-tracking",
     "skill"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mc856/dsh-project-portfolio.git"
+  },
+  "homepage": "https://github.com/mc856/dsh-project-portfolio#readme",
+  "bugs": {
+    "url": "https://github.com/mc856/dsh-project-portfolio/issues"
+  },
   "dependencies": {
     "@deepseek-ai/dsh-tools": "^0.1.1-rc.2",
     "@deepseek-ai/schemastery": "^3.18.1"
