@@ -1,0 +1,40 @@
+{
+  "name": "dsh-project-portfolio",
+  "version": "0.1.0",
+  "description": "Unofficial DSH plugin — long-term, cross-project memory for coding agents: an embedded project-portfolio skill plus portfolio_status / portfolio_log tools over plain markdown files the user owns. Not affiliated with DeepSeek. 非官方社区插件，与 DeepSeek 无关联。",
+  "license": "MIT",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "skill",
+    "templates",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "engines": {
+    "node": "^22.19 || >=24"
+  },
+  "keywords": [
+    "dsh-plugin",
+    "dsh",
+    "agent",
+    "memory",
+    "project-tracking",
+    "skill"
+  ],
+  "dependencies": {
+    "@deepseek-ai/dsh-tools": "^0.1.1-rc.2",
+    "@deepseek-ai/schemastery": "^3.18.1"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}

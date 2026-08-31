@@ -1,0 +1,19 @@
+# dsh-project-portfolio bundle patch — long-term, cross-project memory.
+#
+# Mounts the plugin over any base profile. It registers:
+#   - the `project-portfolio` skill (embedded via ctx.skills.register;
+#     templates ship with the package and are exposed as the skill's
+#     resource base directory)
+#   - two tools via ctx.tools: portfolio_status (read-only digest of the
+#     watchlist + project files) and portfolio_log (append a dated history
+#     line, optionally refresh last_checked)
+#
+# Configuration (via the profile's cordis.patch.yml or --patch overlays):
+#   - id: project-portfolio
+#     config:
+#       enabled: true
+#       portfolioDir: /absolute/path   # default: ~/project-portfolio
+
+- insert:
+    - id: project-portfolio
+      name: 'dsh-project-portfolio'
