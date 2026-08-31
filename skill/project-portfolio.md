@@ -4,10 +4,10 @@ A file-based memory layer for long-term projects. Coding agents naturally scope 
 
 ## Registered tools
 
-This skill ships with two registered tools; prefer them over ad-hoc file reads for the operations they cover:
+This skill ships with two registered tools. For the operations they cover they are not optional conveniences — choose them over generic file tools every time:
 
 - **`portfolio_status`** — for any status / "what's next" / sync request, call this first. It returns the watchlist content plus an inventory of every project file (headline, status lines, last-modified) in one call.
-- **`portfolio_log`** — after acting on a project, record it here: appends a dated history line to the project file (or `_watchlist`), and refreshes `last_checked` when you pass `update_last_checked: true`. Use it for every history append instead of editing the History section by hand.
+- **`portfolio_log`** — the only way to write a history line. Every history entry goes through this tool — even a single line, even when you are already editing the same file for other reasons. The History section is **newest-first**, and this tool inserts at the top to keep it that way; hand-edits tend to append at the bottom and silently break the order. It also refreshes `last_checked` when you pass `update_last_checked: true`, and accepts `_watchlist` as the project.
 
 Everything else — creating project files, rewriting status fields, watchlist trigger bookkeeping — uses normal file tools.
 
@@ -62,6 +62,7 @@ When the user asks "what should I do next", rank across all projects and explain
 
 ## Discipline
 
+- History lines are newest-first and always written through `portfolio_log` — never append history by hand.
 - One-shot actions are one-shot: a follow-up already sent is recorded in history and never re-suggested.
 - On a mismatch between a file and reality (an item closed that the file says is open, a state someone else changed), stop and report before writing anything — don't guess and continue.
 - Write the **impact one-liner** the moment a record is created ("cut cold-start time 40% for ~2k users", "landed interview at X via Y"). It is what makes the evidence report below instant instead of an archaeology dig.

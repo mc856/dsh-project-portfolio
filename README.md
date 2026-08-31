@@ -55,7 +55,7 @@ dsh web --patch ./my.patch.yml
 
 ## Compatibility
 
-Tested by loading into `dsh web` on **0.1.1-rc.2** and **0.1.2-alpha.2** (2026-08-31: boot, skill catalog listing, skill content load, tool registration — zero errors on both). The optional-service degradation (`skills` not mounted → pure tool plugin) is by design; the `tools` service is required.
+Tested by loading into `dsh web` on **0.1.1-rc.2** and **0.1.2-alpha.2** (2026-08-31: boot, skill catalog listing, skill content load, tool registration — zero errors on both), and exercised end-to-end on 0.1.1-rc.2 against the official DeepSeek API (`deepseek-chat`, 2026-08-31): the skill auto-loads from the catalog on a plain "where do my projects stand?" request, and both tools execute in real agent rounds with correct on-disk results. The optional-service degradation (`skills` not mounted → pure tool plugin) is by design; the `tools` service is required.
 
 DSH is a v0.1 developer preview whose documentation states that breaking changes will happen. **Any DSH release may break this plugin.** Profiles pin plugin versions, so upgrading the host does not silently upgrade this plugin — after a host upgrade, expect to retest before trusting it.
 
