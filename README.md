@@ -25,11 +25,13 @@ Long-term, cross-project memory for coding agents: one plain markdown file per p
 
 ## Install
 
-From a profile, as a bundle (the package declares `dsh.bundle.patch`; requires the package to be published on npm — until then, use the patch overlay below with an absolute path to a checkout):
+Into a profile, as a bundle (the package declares `dsh.bundle.patch`, so the plugin mounts automatically):
 
 ```
-dsh plugin add dsh-project-portfolio
+dsh plugin add dsh-project-portfolio --profile web
 ```
+
+Verified end-to-end on 0.1.1-rc.2: install pins the package into the profile, and the next `dsh web` boot registers the skill and both tools with the packaged templates resolving from the installed location.
 
 Or mount it for a single run with a patch overlay (note: `--patch` is a launcher flag — keep it before web-app flags like `--port`):
 
