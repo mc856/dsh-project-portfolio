@@ -61,6 +61,8 @@ Tested by loading into `dsh web` on **0.1.1-rc.2** and **0.1.2-alpha.2** (2026-0
 
 DSH is a v0.1 developer preview whose documentation states that breaking changes will happen. **Any DSH release may break this plugin.** Profiles pin plugin versions, so upgrading the host does not silently upgrade this plugin — after a host upgrade, expect to retest before trusting it.
 
+Since v0.1.1 the package ships **zero runtime dependencies**, and that is deliberate, not minimalism for its own sake: the host mounts its own packages (including the tool registry) as by-name plugin entries and resolves module names from the profile directory. A plugin that lists a host package in `dependencies` therefore installs a second copy into the profile, which can shadow the host's own service resolution and split module-scoped symbol identity — v0.1.0 had exactly this bug (`dsh plugin add` installs crashed at the first tool call), found and fixed the same day. If you are writing your own plugin: keep host packages out of `dependencies`.
+
 **Exit clause / 退场条款:** this plugin exists to cover one square the official skill subsystem leaves to the ecosystem — packaged, tool-backed distribution of one specific skill. If an official capability (or a clearly better-established community standard) covers this square, this repo yields: it will be archived with a pointer to the successor rather than competing with it.
 
 ## Data flow & secrets
